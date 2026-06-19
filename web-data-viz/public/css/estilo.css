@@ -140,13 +140,13 @@ font-weight: 500;
 }
 
 .social .container .origem-texto .texto button{
-  background-color: black;
-  color: white;
-  padding: 1rem;
-  font-family: impact;
+  width: 50%;
+  padding: 0.5rem;
+  background-color: white;
   border-radius: 1rem;
-  border: 2px solid white;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 4px solid black;
 }
 
 .social .container .origem-imagem img{
@@ -236,6 +236,32 @@ border-radius: 1rem;
   background-color: white;
 }
 
+.tocador-de-musica{
+  background-image: url(../assets/imgs/Home-page/music-player.png);
+  height: 6.4rem;
+  width: 22.8rem;
+  position: fixed;
+  bottom: 10px;
+}
+.tocador-de-musica p{
+  margin-left: 1rem;
+}
+
+.botoes-tocador{
+  position: fixed;
+  bottom: 7.5rem;
+  left: 1rem;
+}
+
+.botoes-tocador button{
+  padding: 0.4rem;
+}
+
+
+
+.invisivel{
+  display: none;
+}
 
 
 
