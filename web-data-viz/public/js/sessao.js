@@ -52,9 +52,13 @@ function sortearMusica(cobaia){
     }
     
     let sorteio = parseInt(Math.random() * 17) + 1
-            
-        console.log(sorteio)
+    console.log(sorteio)
+    
+
+        gif_atual.src = "assets/gifs/character-music-gifs/"+sorteio+".gif" 
+
         musica_atual.src="./assets/musicas/"+sorteio+".mp3"
+
         musica_atual.play()
     
     if (sorteio == 1) {
@@ -138,4 +142,16 @@ function mutar(){
     }else{
         musica_atual.muted=true
     }
+}
+
+
+
+
+function select(id, nome, descricao){
+console.log(id, nome, descricao)
+
+gif_personagem.src="assets/gifs/character-idle-animations/"+id+".gif"
+nome_personagem.innerHTML=nome
+descricao_personagem.innerHTML=descricao
+
 }

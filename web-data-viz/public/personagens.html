@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Guilty Gear | Personagens</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="icon" href="./assets/imgs/Home-page/disco.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+</head>
+
+<body>
+
+    <!--header inicio-->
+    <div class="header">
+        <div class="container">
+        <div class="logo-dash">
+          <img src="assets/imgs/Home-page/logo.png" alt="">
+        </div>            <ul class="navbar">
+                <li>
+                    <a href="./index.html">Inicial</a>
+                </li>
+                <li class="agora">Personagens</li>
+                <li>|</li>
+                <li>
+                    <a href="./login.html">Login</a>
+                </li>
+                <li>
+                    <a href="./login.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- simulador inicio -->
+    <div class="simulador">
+        <div class="container">
+            <div class="select-screen">
+                <div class="teste">
+                <div class="characters">
+                    <img src="assets/imgs/character-icons/sol-badguy.png" onclick="select('1', 'Sol BadGuy','Um homem direto e de pavio curto. Ele só fala quando necessário e usa o mínimo de palavras possível para evitar constrangimentos. Não é muito bom em explicar as coisas, por isso prefere se expressar com seu comportamento e atitude agressivos.')">
+                    <img src="assets/imgs/character-icons/ky-kiske.png" onclick="select('2', 'Ky Kyske','Ele é direto e completamente devotado a tudo relacionado ao trabalho, às pessoas e à sua própria moral. Seu amor exagerado pela justiça e pela ajuda aos fracos é mais do que exemplar e até mesmo exagero.')">
+                    <img src="assets/imgs/character-icons/baiken.png" onclick="select('3', 'Baiken','Uma espadachim de ascendência japonesa. Ela se irrita facilmente e é rápida em iniciar uma briga. É do tipo que age por impulso, sem pensar nas consequências. Ela se mantém fiel aos seus princípios e não recua em uma discussão até que ela seja resolvida. No entanto, ela também sabe reconhecer quando a outra parte está certa.')">
+                    <img src="assets/imgs/character-icons/faust.png" onclick="select('4', 'Faust','Ele às vezes faz afirmações fora de contexto e, outras vezes, desenvolve teorias filosóficas e aconselha as pessoas sobre o caminho que devem seguir. Ele passou por um período de colapso mental devido a experiências trágicas. Agora, ele fica mentalmente instável sempre que tem flashbacks desencadeados pelas lembranças desses eventos trágicos. No entanto, no fundo, ele tem uma personalidade carinhosa e gentil, e é uma pessoa bastante culta.')">
+                </div>    
+                            <div class="characters">
+                    <img src="assets/imgs/character-icons/pottemkin.png" onclick="select('5', 'Potemkin','Ele é um homem orgulhoso e de coração leal. Sua estatura pode lhe conferir uma aparência intimidadora, mas ele é um homem gentil que ama a natureza. Acima de tudo, valoriza o dever e, embora tolere a própria dor, não suporta ver os outros sofrerem. Ele enfrenta a adversidade de frente. Recusa-se a ser usado como instrumento para ferir os outros em nome do mal.')">
+                    <img src="assets/imgs/character-icons/happy-chaos.png" onclick="select('6', 'Happy Chaos','Ele é o Original, aquele que descobriu o Quintal e ensinou a humanidade sobre magia. Após absorver metade de I-No, ele mudou drasticamente. Agora, ele carrega dentro de si toda a esperança da humanidade em viver.')">
+                    <img src="assets/imgs/character-icons/Leo.png" onclick="select('7', 'Leo Whitefang','O segundo rei do reino ilírio. Embora aparente ser selvagem e desleixado, é uma pessoa muito cautelosa por dentro. Detesta perder e tem alta autoestima, mas não mede esforços para resolver problemas.')">
+                    <img src="assets/imgs/character-icons/zato-1.png" onclick="select('8', 'Zato=1','O líder de uma antiga organização de assassinos que foi ressuscitado após um encontro com a \'morte\'. Antes de ressuscitar, ele era uma pessoa calma e ponderada, mas após o ocorrido, tornou-se impassível. Ele não consegue encontrar nenhum significado em sua vida, sentir prazer ou tristeza, alegria ou raiva.')">
+                </div>    
+                            <div class="characters">
+                    <img src="assets/imgs/character-icons/millia.png" onclick="select('9', 'Millia','Ela é silenciosa e fria. No entanto, desde que deixou a Guilda, não trabalha mais apenas por lucro como antes. Agora que vive entre pessoas comuns, Millia passou a sentir uma gama mais ampla de emoções. Ela pode não demonstrar isso em suas palavras ou ações, mas descobriu que é capaz de se colocar no lugar dos outros. Quando confrontada com uma situação incerta, às vezes ela pode até parecer uma garota normal da sua idade.')">
+                    <img src="assets/imgs/character-icons/ramlethal.png" onclick="select('10', 'Ramlethal','Ela é uma \'Valentine\', uma forma de vida criada à imagem da humanidade. De acordo com as ordens de sua mãe, implantadas em suas memórias, ela declarou guerra à humanidade. No entanto, por meio de suas interações com Sol e com todos os outros, ela aprendeu a sentir emoções e, eventualmente, tornou-se uma aliada da humanidade.')">
+                    <img src="assets/imgs/character-icons/axl.png" onclick="select('11', 'Axl','Um jovem do século XX com a habilidade de manipular o tempo. Um otimista típico que não leva as coisas muito a sério e simplesmente deixa a vida fluir. Ele é extremamente compassivo e jamais conseguiria ignorar alguém em apuros. Despreza a própria ideia da \'morte\' e jamais recorreria a tirar uma vida, independentemente da situação.')">
+                    <img src="assets/imgs/character-icons/rxx82us-1-306x305.png" onclick="select('12', 'I-no','Sua tendência a abordar alguém como se estivesse conversando com um velho amigo pode fazer com que I-No pareça simpática à primeira vista. Ela não hesita em usar seus encantos femininos para enganar homens, apesar de não ter, de fato, capacidade para trabalhar em equipe. Ela vê todos os outros como seres inferiores, dignos de ridículo, até mesmo \'Aquele Homem\'. Quando confrontada com algo ou alguém que considera irritante ou alarmante, ela revela seu temperamento violento.')">
+                </div>    
+                            <div class="characters">
+                    <img src="assets/imgs/character-icons/may.png" onclick="select('13', 'May','Ela é espirituosa e não se preocupa com coisas pequenas. É do tipo que age antes de pensar, e seus amigos frequentemente se deixam levar por suas ações. No entanto, a atitude positiva de May é contagiante e mantém seu grupo unido, apesar do visível cansaço.')">
+                    <img src="assets/imgs/character-icons/chipp.png" onclick="select('14', 'Chipp Zanuff','Ele é impulsivo e pensar profundamente está longe de ser seu forte. Perde a paciência facilmente e suas palavras muitas vezes soam rudes. Agora que está tentando entrar para a política, aprendeu boas maneiras e habilidades sociais básicas. Reconhece que tem algumas arestas a serem aparadas, mas aceita essas partes de si mesmo.')">
+                    <img src="assets/imgs/character-icons/giovanna.png" onclick="select('15', 'Giovanna','Ela é uma oficial da unidade de operações especiais que protege o Presidente dos Estados Unidos. Ela é cuidadosa com as palavras, mas ainda assim consegue parecer rude e irreverente devido à sua atitude. No fundo, porém, ela tem boas intenções. Ela é especialmente amigável com crianças e animais.')">
+                    <img src="assets/imgs/character-icons/slayer.png" onclick="select('16', 'Slayer','Um cavalheiro descendente de linhagem vampírica, que aprecia o combate genuíno e o haicai como passatempos. Ele segue seu próprio código de \'dandismo\' e encara quase tudo com serenidade. Quando se trata de batalha, no entanto, ele demonstra uma força avassaladora, em grande contraste com sua calma habitual. Devido ao seu longo tempo como vampiro, todos os events da sociedade humana lhe parecem triviais.')">
+                </div>    
+                                <div class="characters">
+                    <img src="assets/imgs/character-icons/jko.png" onclick="select('17', 'Jack-O','Como Justice foi criada usando Aria, o antigo interesse amoroso de Sol, como base, Jack-O\' conseguiu impedir o despertar de Justice fundindo-se com a alma de Aria dentro dela. Foi nesse momento que a alma de Aria foi completamente restaurada dentro de Jack-O\'. No entanto, a consciência de Aria ainda não se manifestou completamente, deixando Jack-O\' em um estado instável onde sua personalidade permanece inalterada.')">
+                    <img src="assets/imgs/character-icons/icon-1ubduiak.png" onclick="select('18', 'Testament','Testament já foi humano, antes de ser cirurgicamente modificado para se tornar um Gear. Sob o controle do Conclave, trabalhou para reviver Justice. Após os eventos do Segundo Torneio de Seleção da Ordem Sagrada, no entanto, recuperou sua consciência de si mesmo.')">
+                    <img src="assets/imgs/character-icons/nagoriyuki.png" onclick="select('19', 'Nagoriyuki','Um samurai vampiro de constituição robusta. Além de seu porte gigante e habilidades de luta excepcionais, ele possui as habilidades sobrenaturais de um vampiro.')">
+                    <img src="assets/imgs/character-icons/aba.png" onclick="select('20', 'A.B.A','Um homúnculo nascido em um laboratório. Ela deu o nome de Paracelso a um machado que se assemelha de uma chave, e o trata como seu marido. Devido à sua educação solitária no laboratório, ela é extremamente tímida em torno de novas pessoas. Ela ainda é emocionalmente imatura, e mostra um lado profundamente ciumento e possessivo quando se trata de Paracelso. ')">
+                </div>
+                </div>
+                    
+            </div>
+
+            <div class="character">
+                <div class="gif_character">
+                    <img src="assets/gifs/character-idle-animations/1.gif" id="gif_personagem">
+                </div>
+
+                <div class="descricao">
+                    <h1 id="nome_personagem">
+                        SOL BADGUY
+                    </h1>
+                    <div class="descricao_personagem">
+                        <p id="descricao_personagem">Um homem direto e de pavio curto. Ele só fala quando necessário e usa o mínimo de palavras possível para evitar constrangimentos. Não é muito bom em explicar as coisas, por isso prefere se expressar com seu comportamento e atitude agressivos.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>
