@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: impact;
 }
 
 .invisivel{
@@ -18,13 +18,6 @@ body {
   height: 5rem;
 }
 
-
-
-
-.label-captura {
-  display: flex;
-  justify-content: center;
-}
 
 .dash-right .avisos {
   display: flex;
@@ -53,6 +46,11 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.div-quiz h1{
+  padding: 1rem;
+  text-align: center;
 }
 
 .div-quiz img{
@@ -90,6 +88,11 @@ body {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+
+
+
+
 
 .dash-right .avisos .container .div-form {
   width: 95%;
