@@ -184,6 +184,26 @@ body {
   background-color: #212124;
 }
 
+#graficos{
+  margin-left: 5rem;
+  width: 40rem;
+  height: 20rem;
+}
+
+
+#grafico-pizza{
+  margin-left: 5rem;
+  width: 20rem;
+  height: 20rem;
+}
+.conta{
+  background-color: #5c6bc0;
+  width: 10rem;
+  height: 10rem;
+  margin-left: 5rem;
+}
+
+
 .dash {
   width: 80%;
   position: relative;

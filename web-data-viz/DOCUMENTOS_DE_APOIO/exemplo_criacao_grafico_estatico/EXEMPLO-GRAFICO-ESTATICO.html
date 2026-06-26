@@ -8,10 +8,18 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body onload="obterDados()"> <!-- Chamando a função obterDados ao carregar a página -->
-  
+  <style>
+
+    .teste{
+      height: fit-content;
+      width: 50rem;
+      background-color: black;
+    }
+
+  </style>
 <!-- Título para o gráfico de linhas -->
 Gráfico de linhas
-<div>
+<div class="teste">
   <!-- Elemento canvas onde o gráfico de linha será desenhado -->
   <canvas id="linha"></canvas>
   <!-- Elemento canvas onde o gráfico de barra será desenhado -->
