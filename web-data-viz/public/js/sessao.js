@@ -130,12 +130,11 @@ function sortearMusica(cobaia){
         personagem_nome.innerHTML = "Jack-O"
     }
 
-
 }
 
 
 function mutar(){
-
+    
     console.log('testeeeeeeeeeeeeee')
     if(musica_atual.muted==true){
         musica_atual.muted=false    

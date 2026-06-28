@@ -6,6 +6,57 @@
 comandos para mysql server
 */
 
+-- CREATE DATABASE aquatech;
+
+-- USE aquatech;
+
+-- CREATE TABLE empresa (
+-- 	id INT PRIMARY KEY AUTO_INCREMENT,
+-- 	razao_social VARCHAR(50),
+-- 	cnpj CHAR(14),
+-- 	codigo_ativacao VARCHAR(50)
+-- );
+
+-- CREATE TABLE usuario (
+-- 	id INT PRIMARY KEY AUTO_INCREMENT,
+-- 	nome VARCHAR(50),
+-- 	email VARCHAR(50),
+-- 	senha VARCHAR(50),
+-- 	fk_empresa INT,
+-- 	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+-- );
+
+-- CREATE TABLE aviso (
+-- 	id INT PRIMARY KEY AUTO_INCREMENT,
+-- 	titulo VARCHAR(100),
+-- 	descricao VARCHAR(150),
+-- 	fk_usuario INT,
+-- 	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+-- );
+
+-- create table aquario (
+-- /* em nossa regra de negócio, um aquario tem apenas um sensor */
+-- 	id INT PRIMARY KEY AUTO_INCREMENT,
+-- 	descricao VARCHAR(300),
+-- 	fk_empresa INT,
+-- 	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+-- );
+
+-- /* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
+
+-- create table medida (
+-- 	id INT PRIMARY KEY AUTO_INCREMENT,
+-- 	temperatura DECIMAL,
+-- 	momento DATETIME,
+-- 	fk_aquario INT,
+-- 	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
+-- );
+
+-- insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
+-- insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
+-- insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
+-- insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+
 CREATE DATABASE aquatech;
 
 USE aquatech;
@@ -26,33 +77,42 @@ CREATE TABLE usuario (
 	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
-);
+ALTER TABLE empresa RENAME TO personagem;
+ALTER TABLE personagem RENAME COLUMN razao_social TO nome;
+ALTER TABLE personagem RENAME COLUMN cnpj TO contador;
+ALTER TABLE personagem RENAME COLUMN codigo_ativacao TO curtidas;
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-	fk_empresa INT,
-	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
-);
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
+ALTER TABLE personagem MODIFY COLUMN contador INT;
+ALTER TABLE personagem MODIFY COLUMN curtidas INT;
 
-create table medida (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	temperatura DECIMAL,
-	momento DATETIME,
-	fk_aquario INT,
-	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
-);
+ALTER TABLE usuario DROP FOREIGN KEY usuario_ibfk_1;
+ALTER TABLE usuario RENAME COLUMN fk_empresa TO fk_personagem;
+ALTER TABLE usuario ADD CONSTRAINT fk_usuario_personagem 
+FOREIGN KEY (fk_personagem) REFERENCES personagem(id);
 
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+desc usuario;
+
+desc personagem;
+
+insert into personagem (nome, contador) values
+	('Sol Badguy', 0),
+	('Ky Kyske', 0),
+	('Baiken', 0),
+	('Faust', 0),
+	('Potemkin', 0),
+	('Happy Chaos', 0),
+	('Leo Whitefang', 0),
+	('Zato=1', 0),
+	('Millia', 0),
+	('Ramlethal', 0),
+	('Axl', 0),
+	('I-no', 0),
+	('May', 0),
+	('Chipp Zanuff', 0),
+	('Giovanna', 0),
+	('Slayer', 0),
+	('Jack-O', 0),
+	('Testament', 0),
+	('Nagoriyuki', 0),
+	('A.B.A', 0);

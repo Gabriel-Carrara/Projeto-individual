@@ -347,14 +347,50 @@ body {
   display: inline-block;
 }
 
-.btns-dash {
+.usuario-e-total {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 1rem;
   margin-top: 30px;
-  flex-wrap: wrap;
-  padding: 0 30% 0 30%;
 }
+
+.usuario-e-total .kpi{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background-color: #212124;
+  padding: 1rem;
+  margin-left: 1rem;
+  align-items: center;
+}
+
+.nome-personagem-margin{
+  margin-left: 0.5rem;
+}
+
+.usuario-e-total .kpi .icone{
+  justify-content: center;
+  align-items: center;
+}
+
+.usuario-e-total .kpi span{
+  display: flex;
+  justify-self: start;
+  align-self: flex-start;
+  font-size: 2rem;
+  color: #e6005a;
+  height: fit-content;
+}
+
+#total_quiz{
+  font-size: 3rem;
+}
+
+.usuario-e-total .kpi img{
+  align-self: end;
+  width: 10rem;
+  border: 5px solid #161618;
+}
+
 
 .graph {
   width: 70%;

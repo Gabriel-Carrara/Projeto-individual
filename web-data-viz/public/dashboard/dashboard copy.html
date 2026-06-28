@@ -71,11 +71,19 @@
         </div>
 
         <div class="dash">
-            <div id="alerta">
-            </div>
 
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+            <div class="usuario-e-total">
+                <div class="kpi">
+                    <span>Personagem atual:<span class="nome-personagem-margin" id="nome_personagem">A.B.A</span></span>
+                    <div class="icone">
+                        <img src="../assets/imgs/character-icons/20.png" alt="">
+                    </div>
+                </div>
+                
+                <div class="kpi">
+                    <span>Quantidade de vezes que o quiz foi feito: </span>
+                    <p id="total_quiz"></p>
+                </div>
             </div>
             <div id="graficos">
                 <canvas id="barras"></canvas>
@@ -97,6 +105,7 @@
 </html>
 
 <script>
+
 function testando(){
 
     var dados = [{
@@ -125,12 +134,24 @@ function testando(){
     }]
 let total = 0
 
-for(let i = 0; i<dados.length-1; i++){
+for(let i = 0; i<dados.length; i++){
     total += dados[i].votos
     
 }
 
-let divisao = (100*dados[1].votos)/75
+for(let i = 0; i<dados.length; i++){
+    for(let j = 0; j<dados.length-1; j++){
+        if(dados[j].votos < dados[j+1].votos){
+            let temp = dados [j]
+            dados[j]=dados[j+1]
+            dados[j+1]=temp
+        }
+    }
+
+}
+
+total_quiz.innerHTML=total
+let divisao = (100*dados[1].votos)/total
 
 
 
