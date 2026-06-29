@@ -80,22 +80,43 @@
                     </div>
                 </div>
                 
-                <div class="kpi">
+                <div class="kpi2">
                     <span>Quantidade de vezes que o quiz foi feito: </span>
                     <p id="total_quiz"></p>
                 </div>
-            </div>
-            <div id="graficos">
-                <canvas id="barras"></canvas>
-            </div>
-            <div id="grafico-pizza">
-                <canvas id="pizza"></canvas>
-            </div>
-            <div class="conta">
-                <span id="resultado">
 
-                </span>
             </div>
+
+            <div>
+
+                <div class="titulo-popularidade">
+                    <div class="titulo-popularidade-2">
+                        <span>Popularidade dos personagens:</span>
+                    </div>
+                </div>
+                
+                <div class="graficos">
+                    
+                <div class="grafico-pizza">
+                    <div class="conta ">
+
+                            <span id="resultado"></span>
+                    
+                    </div>
+
+                    <div class="pizza">
+                        <canvas class="pizza" id="pizza"></canvas>
+                    </div>
+                </div>
+                <div class="grafico-barra">
+                    <canvas id="barras"></canvas>
+                </div>
+            </div>
+
+
+        </div>
+
+
         </div>
     </div>
 
@@ -131,6 +152,42 @@ function testando(){
     {
         nome:'Ino',
         votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
     }]
 let total = 0
 
@@ -155,8 +212,8 @@ let divisao = (100*dados[1].votos)/total
 
 
 
-
-resultado.innerHTML=`${dados[1].votos} / ${total}
+resultado.innerHTML=`Seu personagem: ${dados[1].votos} <br>
+Total: ${total}
 <br>
     ${divisao.toFixed(2)} % dos votos totais
 `

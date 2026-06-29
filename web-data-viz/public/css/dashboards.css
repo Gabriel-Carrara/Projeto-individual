@@ -184,23 +184,67 @@ body {
   background-color: #212124;
 }
 
-#graficos{
-  margin-left: 5rem;
-  width: 40rem;
-  height: 20rem;
+
+
+.titulo-popularidade{
+  display: flex;
+  padding: 1rem;
+  margin-left: 1rem;
+}
+
+.titulo-popularidade-2{
+  display: flex;
+  justify-content: center;
+  color: #e6005a;
+  align-items: center;
+  width: 100%;
+  height: inherit;
+  background-color: #212124;
+  font-size: 3rem;
+}
+
+.graficos{
+  display: flex;
+  padding: 1rem;
+  padding-top: 0;
+  margin-left: 1rem;
 }
 
 
-#grafico-pizza{
-  margin-left: 5rem;
-  width: 20rem;
-  height: 20rem;
+.grafico-pizza{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: inherit;
+  flex-direction: column;
 }
+
+.grafico-pizza span{
+  font-size: 2rem;
+  color: #e6005a;
+}
+
+.pizza{
+  width: 100%;
+  height: fit-content;
+  background-color: #212124;
+}
+
+.grafico-barra{
+  margin-left: 1rem;
+  background-color: #212124;
+  width: 70%;
+  height: 30rem;
+}
+
 .conta{
-  background-color: #5c6bc0;
-  width: 10rem;
-  height: 10rem;
-  margin-left: 5rem;
+  background-color: #212124;
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -347,6 +391,7 @@ body {
   display: inline-block;
 }
 
+
 .usuario-e-total {
   display: flex;
   padding: 1rem;
@@ -355,30 +400,51 @@ body {
 
 .usuario-e-total .kpi{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 50%;
   background-color: #212124;
   padding: 1rem;
   margin-left: 1rem;
-  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
 }
 
 .nome-personagem-margin{
   margin-left: 0.5rem;
 }
 
-.usuario-e-total .kpi .icone{
-  justify-content: center;
-  align-items: center;
+.usuario-e-total .kpi2{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background-color: #212124;
+  padding: 1rem;
+  margin-left: 1rem;
+  justify-content: space-between;
+  height: inherit;
 }
 
 .usuario-e-total .kpi span{
+  font-size: 2rem;
+  color: #e6005a;
+}
+
+.usuario-e-total .kpi2 span{
   display: flex;
   justify-self: start;
   align-self: flex-start;
   font-size: 2rem;
   color: #e6005a;
   height: fit-content;
+}
+
+.usuario-e-total .kpi2 p{
+  display: flex;
+  justify-items: center;
+  align-self: center;
+  font-size: 2rem;
+  color: #e6005a;
+  margin-bottom: 2rem;
 }
 
 #total_quiz{

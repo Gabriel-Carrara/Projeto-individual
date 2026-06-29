@@ -191,7 +191,7 @@ font-weight: 500;
   gap: 2rem ;
   font-size: 0.90rem;
   text-align: center;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .social .container .motivo-texto .motivos-pontos .ponto-um{
@@ -556,11 +556,12 @@ margin-top: 10px;
 
 .simulador .container .character .descricao .descricao_personagem p{
   margin-left: 1rem;
-  font-family: impact;
+  font-family: Arial, Helvetica, sans-serif;
   width: 50rem;
   display: flex;
   flex-wrap: wrap;
   font-weight: bold;
+  font-size: 1.25rem;
   text-align: justify;
 }
 
