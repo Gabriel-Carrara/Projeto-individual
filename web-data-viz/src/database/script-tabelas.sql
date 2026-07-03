@@ -57,6 +57,7 @@ comandos para mysql server
 -- insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
 -- insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
 
+drop database aquatech;
 CREATE DATABASE aquatech;
 
 USE aquatech;
@@ -75,6 +76,32 @@ CREATE TABLE usuario (
 	senha VARCHAR(50),
 	fk_empresa INT,
 	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+);
+
+CREATE TABLE aviso (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	titulo VARCHAR(100),
+	descricao VARCHAR(150),
+	fk_usuario INT,
+	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+);
+
+create table aquario (
+/* em nossa regra de negócio, um aquario tem apenas um sensor */
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	descricao VARCHAR(300),
+	fk_empresa INT,
+	FOREIGN KEY (fk_empresa) REFERENCES empresa(id)
+);
+
+/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
+
+create table medida (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	temperatura DECIMAL,
+	momento DATETIME,
+	fk_aquario INT,
+	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
 );
 
 ALTER TABLE empresa RENAME TO personagem;
@@ -116,3 +143,22 @@ insert into personagem (nome, contador) values
 	('Testament', 0),
 	('Nagoriyuki', 0),
 	('A.B.A', 0);
+    
+    
+    select * from personagem;
+    
+    
+    
+    drop table aviso;
+    drop table aquario;
+    desc aquario;
+    select * from aquario;
+    ALTER TABLE aquario DROP FOREIGN KEY medida_ibfk_1;
+    
+	drop table medida;
+    drop table aquario;
+    
+    select *  from aquatech;
+    
+    show tables;
+    

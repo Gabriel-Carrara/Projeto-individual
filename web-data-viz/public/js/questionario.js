@@ -194,11 +194,11 @@ function resposta(opcao){
 
 
 function finalizar(numero){
-    let camminhoDoIcone = "../assets/imgs/character-icons/" + numero + ".png"
+    let caminhoDoIcone = "../assets/imgs/character-icons/" + numero + ".png"
 
     document.getElementById('meio').classList.add('invisivel')   
     
-    img_icone_quiz.src = camminhoDoIcone
+    img_icone_quiz.src = caminhoDoIcone
 
     quiz_resultado_nome.innerHTML = nomes[numero-1] 
     

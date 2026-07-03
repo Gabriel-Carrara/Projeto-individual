@@ -43,10 +43,14 @@ function sortearMusica(cobaia){
         musica_atual.muted=false
         document.getElementById('tocador').classList.remove('invisivel')
         document.getElementById('tocador-botoes').classList.remove('invisivel')
+        document.getElementById('gif_atual').classList.remove('invisivel')
+
 
     } else {
         document.getElementById('tocador').classList.add('invisivel')
         document.getElementById('tocador-botoes').classList.add('invisivel')
+        document.getElementById('gif_atual').classList.add('invisivel')
+        
         musica_atual.muted=true
         return
     }
