@@ -1,15 +1,152 @@
 
-    // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+ 
 
+ 
     var nomes = [
-            "Sol BadGuy", "Ky Kiske", "Baiken", "Faust", "Potemkin", 
-            "Happy Chaos", "Leo Whitefang", "Zato-1", "Millia Rage", "Ramlethal", 
-            "Axl Low", "I-no", "May", "Chipp Zanuff", "Giovanna", 
-            "Slayer", "Jack-O", "Testament", "Nagoriyuki", "A.B.A"
-        ];
-
-
+      "Sol BadGuy", "Ky Kiske", "Baiken", "Faust", "Potemkin", 
+      "Happy Chaos", "Leo Whitefang", "Zato-1", "Millia Rage", "Ramlethal", 
+      "Axl Low", "I-no", "May", "Chipp Zanuff", "Giovanna", 
+      "Slayer", "Jack-O", "Testament", "Nagoriyuki", "A.B.A"
+    ];
     
+    
+    
+    let passoAtual = "pergunta_paciencia"
+        const jsonComTudo = {
+      "pergunta_paciencia": {
+        "questao": "Qual é o seu nível de paciência?",
+        "opcaoUm": "Zero paciência!",
+        "opcaoDois": "Eu espero o momento certo.",
+        "proximoUm": "pergunta_distancia",
+        "proximoDois": "pergunta_conforto"
+      },
+      "pergunta_distancia": {
+        "questao": "Como você prefere atacar?",
+        "opcaoUm": "Colado no oponente.",
+        "opcaoDois": "Qualquer distância.",
+        "proximoUm": "pergunta_velocidade",
+        "proximoDois": "pergunta_plano"
+      },
+      "pergunta_velocidade": {
+        "questao": "O que você prioriza no combate?",
+        "opcaoUm": "Velocidade extrema.",
+        "opcaoDois": "Pressão constante.",
+        "resultadoUm": 14,
+        "proximoDois": "pergunta_direto"
+      },
+      "pergunta_direto": {
+        "questao": "Prefere um estilo mais direto?",
+        "opcaoUm": "Sim, ofensiva total.",
+        "opcaoDois": "Não, prefiro focar em mobilidade.",
+        "resultadoUm": 12,
+        "proximoDois": "pergunta_estilo_mobilidade"
+      },
+      "pergunta_estilo_mobilidade": {
+        "questao": "Que tipo de mobilidade você prefere?",
+        "opcaoUm": "Velocidade aérea e fintas rápidas (Mix-up).",
+        "opcaoDois": "Avanços com golpes de alto impacto.",
+        "resultadoUm": 9,
+        "proximoDois": "pergunta_impacto"
+      },
+      "pergunta_impacto": {
+        "questao": "Como você quer causar impacto?",
+        "opcaoUm": "Com golpes fortes e elegantes.",
+        "opcaoDois": "Com âncoras e golfinhos.",
+        "resultadoUm": 16,
+        "resultadoDois": 13
+      },
+      "pergunta_plano": {
+        "questao": "Quer um plano de jogo simples?",
+        "opcaoUm": "Sim, direto ao ponto.",
+        "opcaoDois": "Não, quero mecânicas complexas.",
+        "proximoUm": "pergunta_risco",
+        "proximoDois": "pergunta_treino"
+      },
+      "pergunta_risco": {
+        "questao": "Gosta de arriscar tudo?",
+        "opcaoUm": "Sim, aposto tudo!",
+        "opcaoDois": "Não, prefiro consistência.",
+        "resultadoUm": 7,
+        "proximoDois": "pergunta_animais"
+      },
+      "pergunta_animais": {
+        "questao": "Gosta de lutar com ajuda de animais?",
+        "opcaoUm": "Sim!",
+        "opcaoDois": "Não, prefiro resolver sozinho.",
+        "resultadoUm": 15,
+        "resultadoDois": 1
+      },
+      "pergunta_treino": {
+        "questao": "Quanto tempo quer passar no treino?",
+        "opcaoUm": "O básico.",
+        "opcaoDois": "Vou morar no modo treino.",
+        "resultadoUm": 20,
+        "proximoDois": "pergunta_complexidade"
+      },
+      "pergunta_complexidade": {
+        "questao": "O que você prefere?",
+        "opcaoUm": "Invocar e comandar pequenos lacaios no mapa.",
+        "opcaoDois": "Controlar dois personagens ao mesmo tempo",
+        "resultadoUm": 17,
+        "resultadoDois": 8
+      },
+      "pergunta_conforto": {
+        "questao": "Qual sua zona de conforto?",
+        "opcaoUm": "Perto ou Média distância.",
+        "opcaoDois": "Longe do oponente.",
+        "proximoUm": "pergunta_agarrao",
+        "proximoDois": "pergunta_irritar"
+      },
+      "pergunta_agarrao": {
+        "questao": "Gosta do arquetipo Grappler? (Exemplo: Zangieff)",
+        "opcaoUm": "Sim!",
+        "opcaoDois": "Não, prefiro usar técnicas.",
+        "resultadoUm": 5,
+        "proximoDois": "pergunta_honesto"
+      },
+      "pergunta_honesto": {
+        "questao": "Busca um personagem 'honesto'?",
+        "opcaoUm": "Sim, fundamentos são a base.",
+        "opcaoDois": "Não, quero mecânicas variadas.",
+        "proximoUm": "pergunta_contra_ataque",
+        "proximoDois": "pergunta_improviso"
+      },
+      "pergunta_contra_ataque": {
+        "questao": "Gosta de punir erros com contra-ataques fatais?",
+        "opcaoUm": "Sim, vou no erro do oponente.",
+        "opcaoDois": "Não, gosto de criar minhas próprias chances.",
+        "resultadoUm": 3,
+        "proximoDois": "pergunta_certeza"
+      },
+      "pergunta_certeza": {
+        "questao": "Realmente quer ser honesto?",
+        "opcaoUm": "Sim!",
+        "opcaoDois": "Pensando bem, quero impacto.",
+        "resultadoUm": 2,
+        "resultadoDois": 19
+      },
+      "pergunta_improviso": {
+        "questao": "Quanto você gosta de improvisar?",
+        "opcaoUm": "Apenas o necessário.",
+        "opcaoDois": "A partida inteira.",
+        "resultadoUm": 10,
+        "resultadoDois": 4
+      },
+      "pergunta_irritar": {
+        "questao": "Quanto quer irritar o oponente?",
+        "opcaoUm": "Só um pouco.",
+        "opcaoDois": "Quero que ele desinstale o jogo.",
+        "resultadoUm": 18,
+        "proximoDois": "pergunta_vencer"
+      },
+      "pergunta_vencer": {
+        "questao": "Você ainda quer ganhar?",
+        "opcaoUm": "Sim, com eficiência.",
+        "opcaoDois": "Não, prefiro irritar.",
+        "resultadoUm": 6,
+        "resultadoDois": 11
+      }
+      }
 
 function iniciar(){
         document.getElementById('inicio').classList.add('invisivel')
@@ -17,145 +154,8 @@ function iniciar(){
         textoDasQuestoes()    
     }
 
-    let passoAtual = "pergunta_paciencia"
 
-    const jsonComTudo = {
-  "pergunta_paciencia": {
-    "questao": "Qual é o seu nível de paciência?",
-    "opcaoUm": "Zero paciência!",
-    "opcaoDois": "Eu espero o momento certo.",
-    "proximoUm": "pergunta_distancia",
-    "proximoDois": "pergunta_conforto"
-  },
-  "pergunta_distancia": {
-    "questao": "Como você prefere atacar?",
-    "opcaoUm": "Colado no oponente.",
-    "opcaoDois": "Qualquer distância.",
-    "proximoUm": "pergunta_velocidade",
-    "proximoDois": "pergunta_plano"
-  },
-  "pergunta_velocidade": {
-    "questao": "O que você prioriza no combate?",
-    "opcaoUm": "Velocidade extrema.",
-    "opcaoDois": "Pressão constante.",
-    "resultadoUm": 14,
-    "proximoDois": "pergunta_direto"
-  },
-  "pergunta_direto": {
-    "questao": "Prefere um estilo mais direto?",
-    "opcaoUm": "Sim, ofensiva total.",
-    "opcaoDois": "Não, prefiro focar em mobilidade.",
-    "resultadoUm": 12,
-    "proximoDois": "pergunta_estilo_mobilidade"
-  },
-  "pergunta_estilo_mobilidade": {
-    "questao": "Que tipo de mobilidade você prefere?",
-    "opcaoUm": "Velocidade aérea e fintas rápidas (Mix-up).",
-    "opcaoDois": "Avanços com golpes de alto impacto.",
-    "resultadoUm": 9,
-    "proximoDois": "pergunta_impacto"
-  },
-  "pergunta_impacto": {
-    "questao": "Como você quer causar impacto?",
-    "opcaoUm": "Com golpes fortes e elegantes.",
-    "opcaoDois": "Com âncoras e golfinhos.",
-    "resultadoUm": 16,
-    "resultadoDois": 13
-  },
-  "pergunta_plano": {
-    "questao": "Quer um plano de jogo simples?",
-    "opcaoUm": "Sim, direto ao ponto.",
-    "opcaoDois": "Não, quero mecânicas complexas.",
-    "proximoUm": "pergunta_risco",
-    "proximoDois": "pergunta_treino"
-  },
-  "pergunta_risco": {
-    "questao": "Gosta de arriscar tudo?",
-    "opcaoUm": "Sim, aposto tudo!",
-    "opcaoDois": "Não, prefiro consistência.",
-    "resultadoUm": 7,
-    "proximoDois": "pergunta_animais"
-  },
-  "pergunta_animais": {
-    "questao": "Gosta de lutar com ajuda de animais?",
-    "opcaoUm": "Sim!",
-    "opcaoDois": "Não, prefiro resolver sozinho.",
-    "resultadoUm": 15,
-    "resultadoDois": 1
-  },
-  "pergunta_treino": {
-    "questao": "Quanto tempo quer passar no treino?",
-    "opcaoUm": "O básico.",
-    "opcaoDois": "Vou morar no modo treino.",
-    "resultadoUm": 20,
-    "proximoDois": "pergunta_complexidade"
-  },
-  "pergunta_complexidade": {
-    "questao": "O que você prefere?",
-    "opcaoUm": "Invocar e comandar pequenos lacaios no mapa.",
-    "opcaoDois": "Controlar dois personagens ao mesmo tempo",
-    "resultadoUm": 17,
-    "resultadoDois": 8
-  },
-  "pergunta_conforto": {
-    "questao": "Qual sua zona de conforto?",
-    "opcaoUm": "Perto ou Média distância.",
-    "opcaoDois": "Longe do oponente.",
-    "proximoUm": "pergunta_agarrao",
-    "proximoDois": "pergunta_irritar"
-  },
-  "pergunta_agarrao": {
-    "questao": "Gosta do arquetipo Grappler? (Exemplo: Zangieff)",
-    "opcaoUm": "Sim!",
-    "opcaoDois": "Não, prefiro usar técnicas.",
-    "resultadoUm": 5,
-    "proximoDois": "pergunta_honesto"
-  },
-  "pergunta_honesto": {
-    "questao": "Busca um personagem 'honesto'?",
-    "opcaoUm": "Sim, fundamentos são a base.",
-    "opcaoDois": "Não, quero mecânicas variadas.",
-    "proximoUm": "pergunta_contra_ataque",
-    "proximoDois": "pergunta_improviso"
-  },
-  "pergunta_contra_ataque": {
-    "questao": "Gosta de punir erros com contra-ataques fatais?",
-    "opcaoUm": "Sim, vou no erro do oponente.",
-    "opcaoDois": "Não, gosto de criar minhas próprias chances.",
-    "resultadoUm": 3,
-    "proximoDois": "pergunta_certeza"
-  },
-  "pergunta_certeza": {
-    "questao": "Realmente quer ser honesto?",
-    "opcaoUm": "Sim!",
-    "opcaoDois": "Pensando bem, quero impacto.",
-    "resultadoUm": 2,
-    "resultadoDois": 19
-  },
-  "pergunta_improviso": {
-    "questao": "Quanto você gosta de improvisar?",
-    "opcaoUm": "Apenas o necessário.",
-    "opcaoDois": "A partida inteira.",
-    "resultadoUm": 10,
-    "resultadoDois": 4
-  },
-  "pergunta_irritar": {
-    "questao": "Quanto quer irritar o oponente?",
-    "opcaoUm": "Só um pouco.",
-    "opcaoDois": "Quero que ele desinstale o jogo.",
-    "resultadoUm": 18,
-    "proximoDois": "pergunta_vencer"
-  },
-  "pergunta_vencer": {
-    "questao": "Você ainda quer ganhar?",
-    "opcaoUm": "Sim, com eficiência.",
-    "opcaoDois": "Não, prefiro irritar.",
-    "resultadoUm": 6,
-    "resultadoDois": 11
-  }
-}
     
-
 function textoDasQuestoes(){
     let questao = jsonComTudo[passoAtual]
 
@@ -204,9 +204,20 @@ function finalizar(numero){
     
     document.getElementById('fim').classList.remove('invisivel')   
 
+    fetch("/questionario/questionarioSalvar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      indice: numero,
+      id_usuario : sessionStorage.ID_USUARIO
+    })
+    })
+      
+  sessionStorage.FK_PERSONAGEM = numero; 
+  
 }
-
-
     // function publicar() {
     //     var idUsuario = sessionStorage.ID_USUARIO;
 

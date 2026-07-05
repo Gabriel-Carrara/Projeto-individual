@@ -90,7 +90,7 @@
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagem_erro.innerHTML = "Mensagem de erro para todos os campos em branco";
             finalizarAguardar();
             return false;
         }
@@ -122,10 +122,11 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.FK_PERSONAGEM = json.fk_personagem
+                    // sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                         window.location = "./dashboard/dashboard copy.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

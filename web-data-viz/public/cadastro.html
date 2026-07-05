@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="listar()">
+<body>
   <!--header inicio-->
     <div class="header">
         <div class="container">
@@ -91,9 +91,6 @@
 
 <script>
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
-
   function cadastrar() {
     // aguardar();
 
@@ -103,39 +100,76 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    // var codigoVar = codigo_input.value;
+    // var idEmpresaVincular
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      confirmacaoSenhaVar == "" 
+      // codigoVar == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "Campos em branco";
 
       finalizarAguardar();
       return false;
-    } else {
+    } else if(nomeVar.length<2){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Nome deve ter ao menos 2 caracteres";
+
+      finalizarAguardar();
+      return false;
+    } else if(senhaVar.length<3){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Senha deve ter ao menos 3 caracteres";
+
+      finalizarAguardar();
+      return false;
+    } else if(senhaVar!==confirmacaoSenhaVar){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "As senhas não são iguais!";
+
+      finalizarAguardar();
+      return false;
+    } else if(!(emailVar.includes('@') && emailVar.includes('.com'))){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "Email deve possuir @ e .com";
+
+      finalizarAguardar();
+      return false;
+    } else if(!(emailVar.indexOf("@") < emailVar.lastIndexOf('.com'))){
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "@ deve vir antes do .com";
+
+      finalizarAguardar();
+      return false;
+    } 
+
+    else {
       setInterval(sumirMensagem, 5000);
     }
 
     // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
+    // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+    //   if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
+    //     idEmpresaVincular = listaEmpresasCadastradas[i].id
+    //     console.log("Código de ativação válido.");
+    //     break;
+    //   } else {
+    //     cardErro.style.display = "block";
+    //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+    //     finalizarAguardar();
+    //   }
+    // }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -148,8 +182,8 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
-        senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        senhaServer: senhaVar
+        // idEmpresaVincularServer: idEmpresaVincular
       }),
     })
       .then(function (resposta) {
@@ -159,7 +193,7 @@
           cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+            "<span style='color: green;'>Cadastro realizado com sucesso! Redirecionando para tela de Login...</span>";
 
           setTimeout(() => {
             window.location = "login.html";
@@ -180,26 +214,26 @@
   }
 
   // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
+  // function listar() {
+  //   fetch("/empresas/listar", {
+  //     method: "GET",
+  //   })
+  //     .then(function (resposta) {
+  //       resposta.json().then((empresas) => {
+  //         empresas.forEach((empresa) => {
+  //           listaEmpresasCadastradas.push(empresa);
 
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
+  //           console.log("listaEmpresasCadastradas")
+  //           console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+  //         });
+  //       });
+  //     })
+  //     .catch(function (resposta) {
+  //       console.log(`#ERRO: ${resposta}`);
+  //     });
+  // }
 
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
+ function sumirMensagem() {
+   cardErro.style.display = "none";
+ }
 </script>
