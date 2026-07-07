@@ -50,8 +50,17 @@ body {
 }
 
 .div-quiz h1{
-  padding: 1rem;
+  padding: 0.25rem;
   text-align: center;
+}
+
+#quiz_resultado_nome{
+  margin: 0;
+  padding: 0;
+}
+
+.div-quiz p{
+  font-size: 1.25rem;
 }
 
 .div-quiz img{
@@ -59,6 +68,32 @@ body {
   height: 20rem;
 }
 
+
+.likes{
+  gap: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3rem;
+}
+
+
+
+
+.likes div{
+  border-radius: 0.5rem ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  height: 3rem;
+  width: 3rem;
+}
+
+.selecionado{
+  background-color: white !important;
+  color: black;
+}
+  
 
 
 .botao-iniciar{

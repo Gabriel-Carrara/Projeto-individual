@@ -46,7 +46,18 @@ console.log(instrucaoSql)
 return database.executar(instrucaoSql)
 }
 
+function questionarioLike(like, id){
+    console.log('cheguei no questionarioLike do model')
+
+    var instrucaoSql = `UPDATE personagem SET curtidas = curtidas + ${like} WHERE id = ${id};`
+
+        console.log(instrucaoSql)
+    return database.executar(instrucaoSql)
+    
+}
+
 module.exports = {
   salvarPersonagem,
-  salvarUsuario
+  salvarUsuario,
+  questionarioLike
 }

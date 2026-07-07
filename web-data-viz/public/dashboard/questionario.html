@@ -20,7 +20,7 @@
         rel="stylesheet">
 </head>
 
-<body style="background-color: #161618;">
+<body onload="validarSessao()" style="background-color: #161618;">
 
     <div class="janela">
 
@@ -88,6 +88,14 @@
                     <div id="fim" class="div-quiz invisivel">
                         <img src="" id="img_icone_quiz" >
                         <h1 id="quiz_resultado_nome"></h1>
+                        <p>Gostou do personagem? Dê uma nota:</p>
+                        <div class="likes">
+                            <div id="likeUm" onclick="questionario_like(1, 'likeUm')">1</div>
+                            <div id="likeDois" onclick="questionario_like(2, 'likeDois')">2</div>
+                            <div id="likeTres" onclick="questionario_like(3, 'likeTres')">3</div>
+                            <div id="likeQuatro" onclick="questionario_like(4, 'likeQuatro')">4</div>
+                            <div id="likeCinco" onclick="questionario_like(5, 'likeCinco')">5</div>
+                        </div>
                         <button class="botao-iniciar" onclick="window.location.reload()">Tentar denovo!</button>
                         <button class="botao-iniciar" onclick="window.location = './dashboard.html'">Ir para Dashboard</button>
                     </div>
@@ -101,4 +109,7 @@
 
 </body>
 
-</html>
+</html> <script>
+
+
+</script>

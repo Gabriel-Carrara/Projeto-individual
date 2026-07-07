@@ -24,4 +24,6 @@ function cadastrar(razaoSocial, cnpj) {
   return database.executar(instrucaoSql);
 }
 
+
+
 module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };

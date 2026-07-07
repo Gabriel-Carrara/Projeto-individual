@@ -110,8 +110,8 @@ ALTER TABLE personagem RENAME COLUMN cnpj TO contador;
 ALTER TABLE personagem RENAME COLUMN codigo_ativacao TO curtidas;
 
 
-ALTER TABLE personagem MODIFY COLUMN contador INT;
-ALTER TABLE personagem MODIFY COLUMN curtidas INT;
+ALTER TABLE personagem MODIFY COLUMN contador INT NOT NULL DEFAULT(0);
+ALTER TABLE personagem MODIFY COLUMN curtidas INT NOT NULL DEFAULT(0);
 
 ALTER TABLE usuario DROP FOREIGN KEY usuario_ibfk_1;
 ALTER TABLE usuario RENAME COLUMN fk_empresa TO fk_personagem;
@@ -147,7 +147,7 @@ insert into personagem (nome, contador) values
     
     select * from personagem;
     
-    
+    use aquatech;
     
     drop table aviso;
     drop table aquario;
@@ -162,4 +162,3 @@ insert into personagem (nome, contador) values
     
     show tables;
     
-desc usuario;

@@ -52,12 +52,20 @@ function questionarioSalvar(req, res){
         questionarioModel.salvarPersonagem(indice)
         questionarioModel.salvarUsuario(id,indice)
     }
-
-
-
 }
 
-module.exports = {
-questionarioSalvar
 
+function questionarioLike(req, res){
+    var like = req.body.like
+    var id = req.body.id_personagem
+
+    if(like>0 && like <6){
+        questionarioModel.questionarioLike(like, id)
+    }
+}
+
+
+module.exports = {
+questionarioSalvar,
+questionarioLike
 }

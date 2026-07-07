@@ -216,8 +216,66 @@ function finalizar(numero){
     })
       
   sessionStorage.FK_PERSONAGEM = numero; 
-  
 }
+
+let verificacao_like = 0
+
+function questionario_like(like, id){
+    if(verificacao_like>0){
+      return alert('Você já votou! Faça o questionário e tente chegar em outro personagem!')
+    } else {
+      verificacao_like++
+    }
+    document.getElementById('likeUm').classList.remove("selecionado")
+    document.getElementById('likeDois').classList.remove("selecionado")
+    document.getElementById('likeTres').classList.remove("selecionado")
+    document.getElementById('likeQuatro').classList.remove("selecionado")
+    document.getElementById('likeCinco').classList.remove("selecionado")
+
+ 
+    document.getElementById(id).classList.add("selecionado")
+
+
+  var contador = like
+
+
+        fetch("/questionario/questionarioLike", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                like: contador,
+                id_personagem: sessionStorage.FK_PERSONAGEM
+               })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+            } else {
+
+                console.log("Houve um erro ao tentar registrar a avaliação!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+
+
+
+
     // function publicar() {
     //     var idUsuario = sessionStorage.ID_USUARIO;
 
