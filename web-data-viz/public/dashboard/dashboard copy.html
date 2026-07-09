@@ -28,7 +28,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="testando(), validarSessao()">
+<body onload="obterDadosGrafico(), validarSessao(), testando()">
 
     <div class="janela">
         <div class="header-left">
@@ -97,22 +97,42 @@
                 
                 <div class="graficos">
                     
-                <div class="grafico-pizza">
-                    <div class="conta ">
+                    <div class="grafico-barra">
+                        <select id="selectGraficoBarra" onchange="obterDadosGrafico()">
+                            <option value="curtidas">Curtidas</option>
+                            <option value="contador">Votos</option>
+                        </select>
+                        <select id="selectOrdemBarra" onchange="obterDadosGrafico()">
+                            <option value="DESC">Maior - Menor</option>
+                            <option value="ASC">Menor - Maior</option>
+                        </select>
+                        <canvas id="barras"></canvas>
+                    </div>
+                </div>
 
+                <div class="graficos">
+
+                    <div class="grafico-pizza">
+                        <div class="conta ">
+                            
                             <span id="resultado"></span>
+                            
+                        </div>
+                        
+                        <div class="pizza">
+                            <canvas class="pizza" id="pizza"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="historico">
+                        <span>Histórico</span>
+                        <div class="historico-pequeno">
+
+                        </div>                        
+                     
+                    </div>
                     
-                    </div>
-
-                    <div class="pizza">
-                        <canvas class="pizza" id="pizza"></canvas>
-                    </div>
                 </div>
-                <div class="grafico-barra">
-                    <canvas id="barras"></canvas>
-                </div>
-            </div>
-
 
         </div>
 
@@ -188,6 +208,26 @@ function testando(){
     {
         nome:'Ino',
         votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
+    },
+    {
+        nome:'Ino',
+        votos: 30
     }]
 let total = 0
 
@@ -204,7 +244,6 @@ for(let i = 0; i<dados.length; i++){
             dados[j+1]=temp
         }
     }
-
 }
 
 total_quiz.innerHTML=total
@@ -223,63 +262,158 @@ Total: ${total}
   // Chamando a função para plotar o gráfico de barra com os dados
   plotarGraficoBarra(dados)
 }
-    
 
-function plotarGraficoBarra(dados){
+function obterDadosGrafico(){
 
-  var votos = [];
-  var personagens = [];
+    fetch(`/dashboard/graficosBarra`, {cache: 'no-store'}).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-  // Preenchendo os arrays com os dados
-  for(var i = 0; i < dados.length; i++){
-    votos.push(dados[i].votos);
-    personagens.push(dados[i].nome);
-  }
-console.log(votos)
-console.log(personagens)
-  // Capturando o elemento canvas pelo id 
-  var ctx = document.getElementById('pizza').getContext('2d');
-  // Criando o gráfico de barra usando o Chart.js
-  var myChart = new Chart(ctx, {
-      type: 'doughnut', // Tipo de gráfico: barra
-      data: { // Dados para o gráfico
-          labels: personagens, // Rótulos no eixo X
-          datasets: [{
-              label: 'Votos', // Nome do conjunto de dados
-              data: votos, // Dados dos votos
-            backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
-            ],
-              borderColor: [
-                  'rgba(255, 255, 255, 0.9)', // Cor da borda das barras
-              ],
-              borderWidth: 1 // Largura da borda das barras
-          }]
-      },
-  });
-
-  var ctx2 = document.getElementById('barras').getContext('2d');
-  // Criando o gráfico de barra usando o Chart.js
-  var myChart = new Chart(ctx2, {
-      type: 'bar', // Tipo de gráfico: barra
-      data: { // Dados para o gráfico
-          labels: personagens, // Rótulos no eixo X
-          datasets: [{
-              label: 'Votos', // Nome do conjunto de dados
-              data: votos, // Dados dos votos
-            backgroundColor: [
-            'rgb(255, 99, 132)',
-            ],
-              borderColor: [
-                  'rgba(255, 255, 255, 0.9)', // Cor da borda das barras
-              ],
-              borderWidth: 1 // Largura da borda das barras
-          }]
-      },
-  });
+                    
+                    let total = 0
+                    
+                    for(let i = 0; i<resposta.length; i++){
+                        total+= resposta[i].contador
+                    }
+                    total_quiz.innerHTML=total
+                    
+                    
+                    plotarGraficoBarra(resposta);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
 }
+
+function plotarGraficoBarra(resposta){
+           console.log('iniciando plotagem do gráfico...');
+           //     for(let i = 0; i<dadosOrdenados.length; i++){
+            //     for(let j = 0; j<dadosOrdenados.length-1; j++){
+                //         if(dadosOrdenados[j].votos < dadosOrdenados[j+1].votos){
+                    //             let temp = dadosOrdenados [j]
+                    //             dadosOrdenados[j]=dadosOrdenados[j+1]
+                    //             dadosOrdenados[j+1]=temp
+                    //         }
+                    //     }
+                    // }
+                    let dadosOrdenados = []
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [
+            {
+                label: 'Votos',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(199, 52, 52)',
+                tension: 0.1,
+                backgroundColor: 'rgb(230, 0, 90)'
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            if(registro.contador>0){
+
+                labels.push(registro.nome);
+                dados.datasets[0].data.push(registro.contador);
+            } else {
+                continue
+            }
+        }
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'bar',
+            data: dados,
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`barras`),
+            config
+        );
+
+        // setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+    }
+
+
+
+// function plotarGraficoBarra(dados){
+
+//   var votos = [];
+//   var personagens = [];
+
+//   // Preenchendo os arrays com os dados
+//   for(var i = 0; i < dados.length; i++){
+//     votos.push(dados[i].votos);
+//     personagens.push(dados[i].nome);
+//   }
+// console.log(votos)
+// console.log(personagens)
+//   // Capturando o elemento canvas pelo id 
+//   var ctx = document.getElementById('pizza').getContext('2d');
+//   // Criando o gráfico de barra usando o Chart.js
+//   var myChart = new Chart(ctx, {
+//       type: 'doughnut', // Tipo de gráfico: barra
+//       data: { // Dados para o gráfico
+//           labels: personagens, // Rótulos no eixo X
+//           datasets: [{
+//               label: 'Votos', // Nome do conjunto de dados
+//               data: votos, // Dados dos votos
+//             backgroundColor: [
+//             'rgb(255, 99, 132)',
+//             'rgb(54, 162, 235)',
+//             'rgb(255, 205, 86)'
+//             ],
+//               borderColor: [
+//                   'rgba(255, 255, 255, 0.9)', // Cor da borda das barras
+//               ],
+//               borderWidth: 1 // Largura da borda das barras
+//           }]
+//       },
+//   });
+
+//   var ctx2 = document.getElementById('barras').getContext('2d');
+//   // Criando o gráfico de barra usando o Chart.js
+//   var myChart = new Chart(ctx2, {
+//       type: 'bar', // Tipo de gráfico: barra
+//       data: { // Dados para o gráfico
+//           labels: personagens, // Rótulos no eixo X
+//           datasets: [{
+//               label: 'Votos', // Nome do conjunto de dados
+//               data: votos, // Dados dos votos
+//             backgroundColor: [
+//             'rgb(255, 99, 132)',
+//             ],
+//               borderColor: [
+//                   'rgba(255, 255, 255, 0.9)', // Cor da borda das barras
+//               ],
+//               borderWidth: 1 // Largura da borda das barras
+//           }]
+//       },
+//   });
+// }
 
 
 

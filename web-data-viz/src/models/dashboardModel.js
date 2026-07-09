@@ -25,5 +25,11 @@ function cadastrar(razaoSocial, cnpj) {
 }
 
 
+function graficosBarra(){
+  var instrucaoSql = `SELECT * FROM personagem`;
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+  return database.executar(instrucaoSql);
+}
+
+
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, graficosBarra };

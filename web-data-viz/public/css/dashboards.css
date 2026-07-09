@@ -231,7 +231,7 @@ body {
 .titulo-popularidade-2{
   display: flex;
   justify-content: center;
-  color: #e6005a;
+  color: rgb(230, 0, 90);
   align-items: center;
   width: 100%;
   height: inherit;
@@ -268,10 +268,36 @@ body {
 }
 
 .grafico-barra{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #212124;
+  width: 100%;
+  height: 35rem;
+}
+
+.historico{
+  display: flex;
+  flex-direction: column;
   margin-left: 1rem;
   background-color: #212124;
   width: 70%;
-  height: 30rem;
+  height: inherit;
+  overflow-y: auto;
+  gap: 1rem;
+  
+}
+
+.historico-pequeno{
+  display:flex;
+  justify-self: center;
+  align-self: center;
+  flex-shrink: 0;
+  background-color: #0000ff;
+  width: 20rem;
+  height: 5rem;
+  margin: 1rem;
 }
 
 .conta{

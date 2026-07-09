@@ -1,4 +1,4 @@
-var empresaModel = require("../models/empresaModel");
+var dashboardModel = require("../models/dashboardModel");
 
 function buscarPorCnpj(req, res) {
   var cnpj = req.query.cnpj;
@@ -39,9 +39,28 @@ function cadastrar(req, res) {
   });
 }
 
+
+
+
+function graficosBarra(req, res){
+
+  dashboardModel.graficosBarra().then(function (resultado) {
+      if (resultado.length > 0) {
+             res.status(200).json(resultado);
+         } else {
+             res.status(204).send("Nenhum resultado encontrado!")
+         }
+     }).catch(function (erro) {
+         console.log(erro);
+         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+         res.status(500).json(erro.sqlMessage);
+     });
+}
+
 module.exports = {
   buscarPorCnpj,
   buscarPorId,
   cadastrar,
   listar,
+  graficosBarra,
 };

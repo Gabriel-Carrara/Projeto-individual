@@ -61,6 +61,9 @@ function questionarioLike(req, res){
 
     if(like>0 && like <6){
         questionarioModel.questionarioLike(like, id)
+    } else {
+                res.status(400).send("deu erro")
+
     }
 }
 
