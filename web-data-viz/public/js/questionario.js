@@ -192,7 +192,6 @@ function resposta(opcao){
     }
 }
 
-
 function finalizar(numero){
     let caminhoDoIcone = "../assets/imgs/character-icons/" + numero + ".png"
 
@@ -216,7 +215,29 @@ function finalizar(numero){
     })
       
   sessionStorage.FK_PERSONAGEM = numero; 
+
+
+    adicionarHistorico(numero)
 }
+
+
+function adicionarHistorico(numero){
+
+      fetch("/questionario/questionarioRegistro", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      indice: numero,
+      id_usuario : sessionStorage.ID_USUARIO
+    })
+    })
+
+}
+
+
+
 
 let verificacao_like = 0
 

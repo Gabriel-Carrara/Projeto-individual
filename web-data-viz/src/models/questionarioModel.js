@@ -56,8 +56,52 @@ function questionarioLike(like, id){
     
 }
 
+
+function verificarRegistro(indice, id){
+
+       console.log('cheguei no verificarRegistro do model')
+
+    var instrucaoSql = `SELECT * FROM historico WHERE fk_usuario = ${id} AND fk_personagem = ${indice} `
+
+        console.log(instrucaoSql)
+    return database.executar(instrucaoSql)
+    
+
+
+}
+
+
+function criarRegistro(indice, id){
+
+       console.log('cheguei no criarRegistro do model')
+
+    var instrucaoSql = `INSERT INTO historico (fk_usuario, fk_personagem, data_registro) values 
+    (${id},${indice},now())`
+
+        console.log(instrucaoSql)
+    return database.executar(instrucaoSql)
+    
+
+}
+
+
+function atualizarRegistro(indice, id){
+
+       console.log('cheguei no atualizarRegistro do model')
+
+    var instrucaoSql = `UPDATE historico SET data_registro = now() WHERE fk_usuario = ${id} and fk_personagem = ${indice};`
+
+        console.log(instrucaoSql)
+    return database.executar(instrucaoSql)
+    
+}
+
+
 module.exports = {
-  salvarPersonagem,
-  salvarUsuario,
-  questionarioLike
+    salvarPersonagem,
+    salvarUsuario,
+    questionarioLike,
+    verificarRegistro,
+    criarRegistro,
+    atualizarRegistro
 }

@@ -8,17 +8,17 @@ var questionarioModel = require("../models/questionarioModel");
 
 //     console.log(`Recuperando as ultimas ${limite_linhas} medidas`);
 
-//     medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
-//         if (resultado.length > 0) {
-//             res.status(200).json(resultado);
-//         } else {
-//             res.status(204).send("Nenhum resultado encontrado!")
-//         }
-//     }).catch(function (erro) {
-//         console.log(erro);
-//         console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
-//         res.status(500).json(erro.sqlMessage);
-//     });
+    // medidaModel.buscarUltimasMedidas(idAquario, limite_linhas).then(function (resultado) {
+    //     if (resultado.length > 0) {
+    //         res.status(200).json(resultado);
+    //     } else {
+    //         res.status(204).send("Nenhum resultado encontrado!")
+    //     }
+    // }).catch(function (erro) {
+    //     console.log(erro);
+    //     console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+    //     res.status(500).json(erro.sqlMessage);
+    // });
 // }
 
 
@@ -68,7 +68,30 @@ function questionarioLike(req, res){
 }
 
 
+function questionarioRegistro(req, res){
+    var indice = req.body.indice
+    var id = req.body.id_usuario
+
+    if(indice>20||indice<1){
+        res.status(400).send("esse indice não deveria existir (questionarioRegistro)")
+    } else{
+
+        questionarioModel.verificarRegistro(indice, id).then(function (resultado) {
+            if(resultado.length>0){
+                questionarioModel.atualizarRegistro(indice, id)
+            } else {
+                questionarioModel.criarRegistro(indice, id)
+            }
+        })
+    }
+
+
+
+}
+
+
 module.exports = {
 questionarioSalvar,
-questionarioLike
+questionarioLike,
+questionarioRegistro
 }

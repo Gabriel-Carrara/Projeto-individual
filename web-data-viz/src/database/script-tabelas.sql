@@ -161,4 +161,14 @@ insert into personagem (nome, contador) values
     select *  from aquatech;
     
     show tables;
+
+
+	CREATE TABLE historico(
+	fk_usuario INT,
+    fk_personagem INT, 
+    data_registro DATETIME,
+    primary key(fk_usuario, fk_personagem),
+    foreign key(fk_usuario) references usuario(id),
+    foreign key(fk_personagem) references personagem(id)
+    );
     

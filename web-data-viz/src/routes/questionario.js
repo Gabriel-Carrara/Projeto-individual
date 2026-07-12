@@ -19,4 +19,9 @@ router.post("/questionarioLike", function(req, res){
     questionarioController.questionarioLike(req, res)
 })
 
+
+router.post("/questionarioRegistro", function(req, res){
+    questionarioController.questionarioRegistro(req, res)
+})
+
 module.exports = router;
