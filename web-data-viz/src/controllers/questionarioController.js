@@ -48,8 +48,8 @@ function questionarioSalvar(req, res){
     if(indice>20||indice<1){
         res.status(400).send("esse indice não deveria existir")
     } else{
-
         questionarioModel.salvarPersonagem(indice)
+        
         questionarioModel.salvarUsuario(id,indice)
     }
 }
