@@ -28,7 +28,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body onload="obterDadosGrafico(), validarSessao()">
+<body onload="obterDadosGrafico(), validarSessao(), iconeDoUsuario(), historico()">
 
     <div class="janela">
         <div class="header-left">
@@ -74,9 +74,9 @@
 
             <div class="usuario-e-total">
                 <div class="kpi">
-                    <span>Personagem atual:<span class="nome-personagem-margin" id="nome_personagem">A.B.A</span></span>
+                    <span class="nome-personagem-margin" id="nome_personagem"></span>
                     <div class="icone">
-                        <img src="../assets/imgs/character-icons/20.png" alt="">
+                        <img src="" alt="" id="iconePersonagem" class="icone">
                     </div>
                 </div>
                 
@@ -112,12 +112,27 @@
 
                 <div class="graficos">
 
+<div class="conta">
+    <div class="conta-titulo">
+        <h1>Dados Gerais:</h1>
+    </div>
+        <div class="conta1">
+        <h3>Total de curtidas:</h3>
+        <p id="resultadoTotalCurtidas">dowajdoiwajdoi</p>
+        <h3>Total de votos:</h3>
+        <p id="resultadoTotalVotos">dowajdoiwajdoi</p>
+    </div>
+
+    <h1>Seu Personagem:</h1>
+    <div class="conta2">
+        <h3>Curtidas de <span id="nomePersonagemConta"></span>:</h3>
+        <p id="resultadoEspecificoCurtidas"></p>
+        <h3>Votos de <span id="nomePersonagemConta2">teste</span>:</h3>
+        <p id="resultadoEspecificoVotos"></p>
+    </div>
+</div>
+
                     <div class="grafico-pizza">
-                        <div class="conta ">
-                            
-                            <span id="resultado"></span>
-                            
-                        </div>
                         
                         <div class="pizza">
                             <canvas class="pizza" id="pizza"></canvas>
@@ -125,12 +140,13 @@
                     </div>
 
                     <div class="historico">
-                        <span>Histórico</span>
-                        <div class="historico-pequeno">
-
-                        </div>                        
-                     
+                        <div class="historico-titulo">
+                            <h1>Histórico</h1>
+                        </div>
+                        <div class="retangulos" id="historicoId">              
                     </div>
+                    </div>
+                        
                     
                 </div>
 
@@ -147,142 +163,73 @@
 
 <script>
 
-// function testando(){
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-//     var dados = [{
-//         nome:'Zato=1',
-//         votos: 10
-//     },
-//     {
-//         nome:'A.B.A',
-//         votos: 5
-//     },
-//     {
-//         nome:'Baiken',
-//         votos: 15
-//     },
-//     {
-//         nome:'Faust',
-//         votos: 20
-//     },
-//     {
-//         nome:'Sol Badguy',
-//         votos: 25
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     },
-//     {
-//         nome:'Ino',
-//         votos: 30
-//     }]
-// let total = 0
+        var nomes = [
+      "Sol Badguy", "Ky Kiske", "Baiken", "Faust", "Potemkin", 
+      "Happy Chaos", "Leo Whitefang", "Zato-1", "Millia Rage", "Ramlethal", 
+      "Axl Low", "I-no", "May", "Chipp Zanuff", "Giovanna", 
+      "Slayer", "Jack-O", "Testament", "Nagoriyuki", "A.B.A"
+    ];
 
-// for(let i = 0; i<dados.length; i++){
-//     total += dados[i].votos
+
+function historico(){
+    let id = sessionStorage.ID_USUARIO
+    fetch(`/dashboard/pegarHistorico/${id}`, {
+    method: "GET",   
+})
+      .then(res => {
+        res.json().then(json => {
+            json.forEach(element => {
+                historicoId.innerHTML+=`<div class="historico-pequeno">
+                                <img src="../assets/imgs/character-icons/${element.fk_personagem}.png" alt="">
+                                <span class="dadosHistorico">
+                                    <p>Nome: ${nomes[element.fk_personagem-1]}</p>
+                                    <p>Data: ${element.data_registro.split('T')[0]} </p>
+                                </span>
+                                <p class="trocar">Alterar para esse</p>
+                            </div>  `
+            });
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      })
+}
     
-// }
+function iconeDoUsuario() {
+    let indice = sessionStorage.FK_PERSONAGEM
+            
+    if (indice>0 && indice<21){
+        nome_personagem.innerHTML = 'Personagem atual: '+nomes[indice - 1]
+        
+        iconePersonagem.src = '../assets/imgs/character-icons/' + indice + '.png'
+    }else {
+        nome_personagem.innerHTML='Faça o questionário!'
+    }
+    
 
-// for(let i = 0; i<dados.length; i++){
-//     for(let j = 0; j<dados.length-1; j++){
-//         if(dados[j].votos < dados[j+1].votos){
-//             let temp = dados [j]
-//             dados[j]=dados[j+1]
-//             dados[j+1]=temp
-//         }
-//     }
-// }
-
-// total_quiz.innerHTML=total
-// let divisao = (100*dados[1].votos)/total
-
-
-
-// resultado.innerHTML=`Seu personagem: ${dados[1].votos} <br>
-// Total: ${total}
-// <br>
-//     ${divisao.toFixed(2)} % dos votos totais
-// `
-
-
-
-//   // Chamando a função para plotar o gráfico de barra com os dados
-//   plotarGraficoBarra(dados)
-// }
-
+}
 
 let dadosGlobais = [[],[]]
 let myChart
 
 function obterDadosGrafico(){
-
+    
     fetch(`/dashboard/graficosBarra`, {cache: 'no-store'}).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-                    
-                    let total = 0
-                    
-                    for(let i = 0; i<resposta.length; i++){
-                        total+= resposta[i].contador
-                    }
-                    total_quiz.innerHTML=total
-                    
-                    for(let i = 0; i<resposta.length; i++){
+        if (response.ok) {
+            response.json().then(function (resposta) {
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                
+                
+                let total = 0
+                
+                for(let i = 0; i<resposta.length; i++){
+                    total+= resposta[i].contador
+                }
+                total_quiz.innerHTML=total
+                
+                for(let i = 0; i<resposta.length; i++){
                         if(resposta[i].contador>0){
                             dadosGlobais[0].push(resposta[i])
                         } 
@@ -290,10 +237,11 @@ function obterDadosGrafico(){
                             dadosGlobais[1].push(resposta[i])
                         }
                     }
-                    
+
                     console.log(dadosGlobais)
                     graficoPizza()
                     graficoBarra()
+                    kpiCalculo()
                     // plotarGraficoBarra(resposta);
                 });
             } else {
@@ -305,6 +253,50 @@ function obterDadosGrafico(){
             });
 }
 
+
+function kpiCalculo(){
+    let indice = sessionStorage.FK_PERSONAGEM
+    let nomePersonagemFuncao= nomes[indice - 1]
+    nomePersonagemConta.innerHTML = nomePersonagemFuncao
+    nomePersonagemConta2.innerHTML = nomePersonagemFuncao
+    
+    let contadorTotal = 0
+    let curtidasTotal = 0
+    let contadorPersonagem = 0
+    let curtidasPersonagem = 0
+
+for(let i = 0; i<dadosGlobais[0].length; i++){
+    contadorTotal+= dadosGlobais[0][i].contador
+}
+for(let i = 0; i<dadosGlobais[1].length; i++){
+    curtidasTotal+= dadosGlobais[1][i].curtidas
+}
+for(let i = 0; i<dadosGlobais[0].length; i++){
+    if(dadosGlobais[0][i].nome==nomePersonagemFuncao){
+        contadorPersonagem= dadosGlobais[0][i].contador
+    }
+}
+for(let i = 0; i<dadosGlobais[1].length; i++){
+    if(dadosGlobais[1][i].nome==nomePersonagemFuncao){
+        curtidasPersonagem= dadosGlobais[1][i].curtidas
+    }
+}
+
+resultadoTotalCurtidas.innerHTML = curtidasTotal
+resultadoTotalVotos.innerHTML = contadorTotal
+
+
+let divisaoCurtidas = (100*curtidasPersonagem)/curtidasTotal
+let divisaoContador = (100*contadorPersonagem)/contadorTotal
+
+resultadoEspecificoCurtidas.innerHTML = `Curtidas: ${curtidasPersonagem}
+<br>
+    ${divisaoCurtidas.toFixed(2)}% do total`
+resultadoEspecificoVotos.innerHTML=`Votos: ${contadorPersonagem}
+<br>
+    ${divisaoContador.toFixed(2)}% do total`
+
+}
 
 function graficoPizza(){
  let labels = [];
@@ -548,7 +540,6 @@ function atualizarDados(){
 
 
 
-    // b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     // let proximaAtualizacao;
 

@@ -19,7 +19,7 @@ function buscarPorCnpj(cnpj) {
 }
 
 function cadastrar(razaoSocial, cnpj) {
-  var instrucaoSql = `INSERT INTO empresa (razao_social, cnpj) VALUES ('${razaoSocial}', '${cnpj}')`;
+  var instrucaoSql = `INSERT INTO empresa (razao_social, cnpj) VALUES ('${razaoSocial}', '${cnpj}');`
 
   return database.executar(instrucaoSql);
 }
@@ -32,4 +32,10 @@ function graficosBarra(){
 }
 
 
-module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, graficosBarra };
+function pegarHistorico(id){
+  var instrucaoSql = `SELECT fk_usuario, fk_personagem, cast(data_registro as date) data_registro FROM historico WHERE fk_usuario = ${id} ORDER BY data_registro DESC;`
+
+  return database.executar(instrucaoSql);
+}
+
+module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar, graficosBarra, pegarHistorico };

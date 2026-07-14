@@ -152,6 +152,7 @@ function mutar(){
 
 
 
+
 function select(id, nome, descricao){
 console.log(id, nome, descricao)
 

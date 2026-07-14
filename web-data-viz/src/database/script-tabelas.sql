@@ -122,27 +122,28 @@ desc usuario;
 
 desc personagem;
 
-insert into personagem (nome, contador) values
-	('Sol Badguy', 0),
-	('Ky Kyske', 0),
-	('Baiken', 0),
-	('Faust', 0),
-	('Potemkin', 0),
-	('Happy Chaos', 0),
-	('Leo Whitefang', 0),
-	('Zato=1', 0),
-	('Millia', 0),
-	('Ramlethal', 0),
-	('Axl', 0),
-	('I-no', 0),
-	('May', 0),
-	('Chipp Zanuff', 0),
-	('Giovanna', 0),
-	('Slayer', 0),
-	('Jack-O', 0),
-	('Testament', 0),
-	('Nagoriyuki', 0),
-	('A.B.A', 0);
+insert into personagem (nome, contador, curtidas) values
+	('Sol Badguy', 0,0),
+	('Ky Kiske', 0,0),
+	('Baiken', 0,0),
+	('Faust', 0,0),
+	('Potemkin', 0,0),
+	('Happy Chaos', 0,0),
+	('Leo Whitefang', 0,0),
+	('Zato-1', 0,0),
+	('Millia Rage', 0,0),
+	('Ramlethal', 0,0),
+	('Axl Low', 0,0),
+	('I-no', 0,0),
+	('May', 0,0),
+	('Chipp Zanuff', 0,0),
+	('Giovanna', 0,0),
+	('Slayer', 0,0),
+	('Jack-O', 0,0),
+	('Testament', 0,0),
+	('Nagoriyuki', 0,0),
+	('A.B.A', 0,0),
+	('vazio', 0,0);
     
     
     select * from personagem;
@@ -166,7 +167,7 @@ insert into personagem (nome, contador) values
 	CREATE TABLE historico(
 	fk_usuario INT,
     fk_personagem INT, 
-    data_registro DATETIME,
+    data_registro DATE,
     primary key(fk_usuario, fk_personagem),
     foreign key(fk_usuario) references usuario(id),
     foreign key(fk_personagem) references personagem(id)

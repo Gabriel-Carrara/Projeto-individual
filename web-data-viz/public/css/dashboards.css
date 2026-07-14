@@ -251,7 +251,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 44%;
   height: inherit;
   flex-direction: column;
 }
@@ -274,41 +274,128 @@ body {
   flex-direction: column;
   background-color: #212124;
   width: 100%;
-  height: 35rem;
+  height: 40rem;
 }
 
 .historico{
   display: flex;
+  align-items: center;
   flex-direction: column;
   margin-left: 1rem;
-  background-color: #212124;
-  width: 70%;
-  height: inherit;
-  overflow-y: auto;
-  gap: 1rem;
-  
+  width: 33%;
+
 }
 
-.historico-pequeno{
-  display:flex;
-  justify-self: center;
-  align-self: center;
-  flex-shrink: 0;
-  background-color: #0000ff;
-  width: 20rem;
-  height: 5rem;
-  margin: 1rem;
-}
-
-.conta{
-  background-color: #212124;
-  width: 100%;
-  margin-bottom: 1rem;
+.historico-titulo{
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #212124;
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #e6005a;
 }
 
+.retangulos{
+  display: flex;
+  background-color: #212124;
+  flex-direction:column ;
+  height: 34.5rem;
+  overflow-y: auto;
+  gap: 1rem;
+  width: 100%;
+}
+
+
+
+.historico-pequeno{
+  color: white;
+  display:flex;
+  justify-self: center;
+  align-self: center;
+  align-items: center;
+  flex-shrink: 0;
+  background-color: black;
+  width: 28rem;
+  height: 7rem;
+  margin: 1rem;
+}
+
+.historico-pequeno img{
+  margin-left: 0.25rem;
+  height: 6rem;
+  border: 2px solid #e6005a;
+}
+
+.dadosHistorico{
+  margin-left: 1rem;
+}
+
+.trocar{
+  margin-left: 2rem;
+  text-decoration: underline;
+}
+
+
+.conta {
+  background-color: #212124;
+  color: #e6005a;
+  width: 20%;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column; 
+  justify-content: center;
+  align-items: center;
+  height: 38rem;  
+  padding: 1.5rem;
+}
+
+
+.conta h1 {
+  margin: 0;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.conta1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+}
+
+.conta2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+}
+
+.conta1 h3 {
+  margin: 0; 
+  color: #ffffff; 
+}
+
+.conta2 h3 {
+  margin: 0;
+  color: #ffffff; 
+}
+
+.conta1 p{
+  margin: 0;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.conta2 p {
+  margin: 0;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 
 .dash {
   width: 80%;
@@ -468,8 +555,10 @@ body {
   padding: 1rem;
   margin-left: 1rem;
   justify-content: space-between;
-  height: fit-content;
+  height: 10rem;
 }
+
+
 
 .nome-personagem-margin{
   margin-left: 0.5rem;
