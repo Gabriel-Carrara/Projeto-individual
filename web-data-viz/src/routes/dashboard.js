@@ -32,7 +32,9 @@ router.get("/pegarHistorico/:id", function (req, res){
   dashboardController.pegarHistorico(req, res)
 })
 
-
+router.post("/alterarPersonagem", function(req, res){
+    dashboardController.alterarPersonagem(req, res)
+})
 
 
 

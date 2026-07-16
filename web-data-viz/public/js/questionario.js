@@ -222,7 +222,7 @@ function finalizar(numero){
 
 
 function adicionarHistorico(numero){
-
+  console.log('teste')
       fetch("/questionario/questionarioRegistro", {
     method: "POST",
     headers: {

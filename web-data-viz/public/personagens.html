@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
-<body>
+<body onload="dashIcone()">
 
     <!--header inicio-->
     <div class="header">
@@ -29,12 +29,17 @@
                 </li>
                 <li class="agora">Personagens</li>
                 <li>|</li>
-                <li>
-                    <a href="./login.html">Login</a>
-                </li>
-                <li>
-                    <a href="./login.html">Cadastro</a>
-                </li>
+          <div class="login-cadastro" id="login-registro">
+            <li>
+              <a href="login.html">Login</a>
+            </li>
+            <li>
+              <a href="cadastro.html">Cadastro</a>
+            </li>
+          </div>
+          <div class="icone-nav invisivel" id="iconePFP" onclick="window.location.href='dashboard/dashboard.html'">
+            <img src="assets/imgs/character-icons/20.png" alt="" id="iconeNav">
+          </div>
             </ul>
         </div>
     </div>
@@ -59,7 +64,7 @@
                 </div>    
                             <div class="characters">
                     <img src="assets/imgs/character-icons/9.png" onclick="select('9', 'Millia','Ela é silenciosa e fria. No entanto, desde que deixou a Guilda, não trabalha mais apenas por lucro como antes. Agora que vive entre pessoas comuns, Millia passou a sentir uma gama mais ampla de emoções. Ela pode não demonstrar isso em suas palavras ou ações, mas descobriu que é capaz de se colocar no lugar dos outros. Quando confrontada com uma situação incerta, às vezes ela pode até parecer uma garota normal da sua idade.')">
-                    <img src="assets/imgs/character-icons/10.png" onclick="select('10', 'Ramlethal','Ela é uma 'Valentine', uma forma de vida criada à imagem da humanidade. De acordo com as ordens de sua mãe, implantadas em suas memórias, ela declarou guerra à humanidade. No entanto, por meio de suas interações com Sol e com todos os outros, ela aprendeu a sentir emoções e, eventualmente, tornou-se uma aliada da humanidade.')">
+                    <img src="assets/imgs/character-icons/10.png" onclick="select('10', `Ramlethal','Ela é uma 'Valentine', uma forma de vida criada à imagem da humanidade. De acordo com as ordens de sua mãe, implantadas em suas memórias, ela declarou guerra à humanidade. No entanto, por meio de suas interações com Sol e com todos os outros, ela aprendeu a sentir emoções e, eventualmente, tornou-se uma aliada da humanidade.`)">
                     <img src="assets/imgs/character-icons/11.png" onclick="select('11', 'Axl','Um jovem do século XX com a habilidade de manipular o tempo. Um otimista típico que não leva as coisas muito a sério e simplesmente deixa a vida fluir. Ele é extremamente compassivo e jamais conseguiria ignorar alguém em apuros. Despreza a própria ideia da \'morte\' e jamais recorreria a tirar uma vida, independentemente da situação.')">
                     <img src="assets/imgs/character-icons/12.png" onclick="select('12', 'I-no','Sua tendência a abordar alguém como se estivesse conversando com um velho amigo pode fazer com que I-No pareça simpática à primeira vista. Ela não hesita em usar seus encantos femininos para enganar homens, apesar de não ter, de fato, capacidade para trabalhar em equipe. Ela vê todos os outros como seres inferiores, dignos de ridículo, até mesmo \'Aquele Homem\'. Quando confrontada com algo ou alguém que considera irritante ou alarmante, ela revela seu temperamento violento.')">
                 </div>    

@@ -11,6 +11,19 @@
      }
  }
 
+ function dashIcone(){
+         var indice = sessionStorage.FK_PERSONAGEM
+         if(indice==21){
+
+         }else
+         if(indice>0 || indice<21){
+             document.getElementById('login-registro').classList.add("invisivel")
+             document.getElementById('iconePFP').classList.remove("invisivel")
+             document.getElementById('iconeNav').src = 'assets/imgs/character-icons/' + indice + '.png';            
+} 
+    console.log(indice)
+ }
+
 
 
 
@@ -59,7 +72,6 @@ function sortearMusica(cobaia){
     
     let sorteio = parseInt(Math.random() * 17) + 1
     console.log(sorteio)
-    sessionStorage.musica = sorteio
 
         gif_atual.src = "assets/gifs/character-music-gifs/"+sorteio+".gif" 
 

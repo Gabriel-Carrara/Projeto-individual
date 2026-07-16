@@ -24,4 +24,8 @@ router.post("/questionarioRegistro", function(req, res){
     questionarioController.questionarioRegistro(req, res)
 })
 
+router.post("/dashboardTrocar", function(req, res){
+    questionarioController.dashboardTrocar(req, res)
+})
+
 module.exports = router;

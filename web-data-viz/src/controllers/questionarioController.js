@@ -90,8 +90,21 @@ function questionarioRegistro(req, res){
 }
 
 
+function dashboardTrocar(req, res){
+    var indice = req.body.indice
+    var id = req.body.id_usuario
+
+    if(indice>20||indice<1){
+        res.status(400).send("esse indice não deveria existir")
+    } else{        
+        questionarioModel.salvarUsuario(id,indice)
+    }
+}
+
+
 module.exports = {
 questionarioSalvar,
 questionarioLike,
-questionarioRegistro
+questionarioRegistro,
+dashboardTrocar
 }

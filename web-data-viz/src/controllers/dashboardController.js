@@ -75,7 +75,9 @@ function pegarHistorico(req, res){
      });
 }
 
-
+function alterarPersonagem(req, res){
+let indice = req.body.indice
+}
 
 module.exports = {
   buscarPorCnpj,

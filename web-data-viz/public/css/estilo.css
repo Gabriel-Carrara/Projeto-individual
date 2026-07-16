@@ -9,7 +9,7 @@ body {
 }
 
 :root {
-  --tamanho-header: 80px;
+  --tamanho-header: 90px;
   --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
@@ -162,6 +162,14 @@ font-weight: 500;
 }
 
 
+.icone-nav img{
+  display: flex;
+  height: 4rem;
+  width: 4rem;
+  margin-left: 5rem;
+}
+
+
 .social .container .motivo-texto{
   width: 65vh;
   height: 100px;
@@ -264,7 +272,7 @@ border-radius: 1rem;
 
 
 .invisivel{
-  display: none;
+  display: none !important;
 }
 
 
@@ -450,6 +458,12 @@ input {
   padding: 10px;
   text-align: center;
   border-radius: 10px;
+}
+
+
+.login-cadastro{
+  display: flex;
+  flex-direction: row;
 }
 
 .btn {

@@ -33,7 +33,7 @@ function graficosBarra(){
 
 
 function pegarHistorico(id){
-  var instrucaoSql = `SELECT fk_usuario, fk_personagem, cast(data_registro as date) data_registro FROM historico WHERE fk_usuario = ${id} ORDER BY data_registro DESC;`
+  var instrucaoSql = `SELECT fk_usuario, fk_personagem, data_registro FROM historico WHERE fk_usuario = ${id} ORDER BY data_registro DESC;`
 
   return database.executar(instrucaoSql);
 }
